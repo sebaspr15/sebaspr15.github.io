@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastián Pérez Rueda | Medios Interactivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF; /* Cian eléctrico profesional */
+        }
+
+        /* Scroll suave para la navegación */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* --- NAVBAR STICKY --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(7, 7, 10, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0; /* Reducido */
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh; /* Reducido ligeramente para ver contenido antes */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin: 0 0 10px 0;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--text-muted);
+            margin: 0 0 20px 0; /* Reducido */
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 30px; /* Reducido */
+        }
+
+        /* Botón del Hero */
+        .btn-hero {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-base);
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            background-color: #fff;
+            color: var(--bg-base);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+            text-shadow: none;
+            transform: translateY(-3px);
+        }
+
+        /* --- SECCIONES --- */
+        section {
+            padding: 80px 0; /* Reducido de 120px a 80px */
+            scroll-margin-top: 70px; 
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 40px; /* Reducido de 60px a 40px */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 5px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        /* --- TEXTOS SOBRE MI --- */
+        .about-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        .about-text strong {
+            color: var(--text-main);
+        }
+
+        /* --- ARSENAL / SKILLS --- */
+        .skills-container {
+            margin-top: 30px; /* Reducido de 50px */
+        }
+        
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            color: var(--accent);
+        }
+
+        .skill-item img {
+            width: 50px;
+            height: 50px;
+            filter: grayscale(100%) brightness(150%);
+            transition: filter 0.3s;
+        }
+
+        .skill-item:hover img {
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        /* --- PROYECTOS --- */
+        .project-block {
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px; /* Reducido de 50px a 40px */
+            margin-bottom: 50px; /* Reducido de 80px a 50px */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: border 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .project-block:hover {
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .project-content {
+            margin-top: 25px; /* Reducido */
+        }
+
+        .project-content h3 {
+            font-size: 2.2rem;
+            margin: 0 0 10px 0; /* Reducido */
+        }
+
+        .project-tags {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 15px; /* Reducido */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .project-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 95%;
+        }
+
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px; /* Reducido de 20px a 15px */
+            width: 100%;
+        }
+
+        .video-wrapper-9-16 {
+            position: relative;
+            padding-bottom: 177.77%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper-9-16 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* --- CONTACTO --- */
+        .contact-section {
+            text-align: left;
+            padding-bottom: 60px; /* Reducido de 100px */
+        }
+
+        .contact-message {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            max-width: 800px;
+            margin-bottom: 30px; /* Reducido */
+        }
+
+        .contact-email {
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 25px; /* Reducido */
+            color: var(--text-main);
+            user-select: all;
+        }
+
+        .btn-linkedin {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 12px 35px; /* Reducido */
+            font-size: 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-linkedin:hover {
+            background-color: var(--accent);
+            color: var(--bg-base);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            text-shadow: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .shorts-grid { grid-template-columns: 1fr; }
+            .project-block { padding: 30px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">S<span>P.</span></div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#background">Background</a>
+                <a href="#proyectos">Trabajos</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <header id="inicio" class="hero">
+            <h1>Sebastián <span>Pérez</span></h1>
+            <h2>Diseñador de Medios Interactivos</h2>
+            <p>Transformo problemas complejos en experiencias visuales e interactivas. Fusiono arte, diseño y programación para crear soluciones que funcionan y emocionan.</p>
+            <a href="#proyectos" class="btn-hero">Ver mis trabajos</a>
+        </header>
+
+        <section id="background">
+            <h2 class="section-title">Background</h2>
+            <div class="about-text">
+                <p>Soy un apasionado por la creatividad, la naturaleza y la capacidad humana de dar forma a lo increíble. Como futuro graduado en Diseño de Medios Interactivos por la USFQ, mi filosofía de trabajo se basa en el <strong>aprendizaje constante</strong> y la ejecución precisa. Puedo diseñar una interfaz limpia, animar un modelo 3D con físicas reales, o programar las lógicas de red para un videojuego; mi objetivo siempre es conectar el aspecto técnico con una narrativa visual fuerte.</p>
+                <p>Me especializo en <strong>animación, rigging, texturizado y modelado 3D</strong>. Además, integro experiencias inmersivas con realidad virtual, desarrollo de páginas web y prototipado físico con Arduino. Para mí, el diseño es un ecosistema completo.</p>
+            </div>
+
+            <div class="skills-container">
+                <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 20px;">Arsenal Tecnológico</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/aftereffects/aftereffects-original.svg" alt="After Effects">
+                        <span>After Effects</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg" alt="Illustrator">
+                        <span>Illustrator</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg" alt="Photoshop">
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maya/maya-original.svg" alt="Maya">
+                        <span>Maya</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity">
+                        <span>Unity</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg" alt="Arduino">
+                        <span>Arduino</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="Web Dev">
+                        <span>Web Dev</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2 class="section-title">Trabajos</h2>
+
+            <div class="project-block">
+                <div class="shorts-grid">
+                    <div class="video-wrapper-9-16">
+                        <iframe src="https://www.youtube.com/embed/BEz0q-FU6aY" title="Wairu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper-9-16">
+                        <iframe src="https://www.youtube.com/embed/H8qVC4mqqN4" title="Expansores" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper-9-16">
+                        <iframe src="https://www.youtube.com/embed/OWkobZYfOX8" title="El Pensador" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Identidad y Memoria: Antropología USFQ</h3>
+                    <div class="project-tags">Motion Graphics // After Effects // Illustrator</div>
+                    <p class="project-desc">Dar vida a la historia a través del diseño. Este proyecto consistió en interpretar la imagen de marca del Departamento de Antropología y crear ilustraciones vectoriales para luego animarlas de forma dinámica. Utilizando luma maps, máscaras complejas y un timing meticuloso, estas piezas formaron parte de los ganadores en un concurso con más de 100 propuestas universitarias.</p>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="video-wrapper-16-9">
+                    <iframe src="https://www.youtube.com/embed/B4rXvKCJ49Q" title="Robot Turntable" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="project-content">
+                    <h3>Del Concepto 2D a la Realidad 3D</h3>
+                    <div class="project-tags">Modelado 3D // Maya // Photoshop</div>
+                    <p class="project-desc">La magia de tomar una idea plana y darle volumen. Inspirado en una ilustración original de Jake Parker, construí y modelé la estructura mecánica completa de este robot dentro de Autodesk Maya. El trabajo de texturizado se realizó meticulosamente en Photoshop para otorgarle carácter, desgaste realista y personalidad tridimensional.</p>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="video-wrapper-16-9">
+                    <iframe src="https://www.youtube.com/embed/s9_jJGyQyP4" title="Parkour Animation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="project-content">
+                    <h3>Fluidez y Energía: Parkour</h3>
+                    <div class="project-tags">Animación 3D // Biomecánica // Maya</div>
+                    <p class="project-desc">Animar no es solo mover un personaje, es entender la física y el peso de cada acción. Utilizando el rig del "Ultimate Walker", coreografié esta secuencia de parkour enfocándome en las físicas del impacto, la fluidez del movimiento continuo y la fuerza visual que transmite una buena ejecución de keyframes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <h2 class="section-title" style="border-left-color: transparent; padding-left: 0;">Iniciemos algo.</h2>
+            <div class="contact-message">
+                El diseño no es solo estética; es el puente entre la imaginación y la realidad. Si buscas solucionar un problema complejo, dar vida a una idea innovadora o construir experiencias interactivas que dejen huella, aquí estoy. 
+            </div>
+            
+            <span class="contact-email">dsperez@estud.usfq.edu.ec</span>
+            
+            <a href="https://www.linkedin.com/in/sebastian-perez-60a74b288/" target="_blank" class="btn-linkedin">
+                Conectar en LinkedIn
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda. Diseñado y desarrollado con pasión.
+    </footer>
+
+</body>
+</html>
