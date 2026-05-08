@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidad y Memoria | Sebastián Pérez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px; /* Un poco más angosto para lectura tipo artículo */
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR SENCILLO PARA VOLVER */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header {
+            margin-bottom: 60px;
+        }
+
+        .project-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin: 0 0 15px 0;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO DEL CASO DE ESTUDIO */
+        .content-section {
+            margin-bottom: 80px;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* IMÁGENES DE PLACEHOLDER */
+        .img-placeholder {
+            width: 100%;
+            height: auto;
+            background-color: var(--bg-card);
+            border: 1px dashed rgba(0, 240, 255, 0.3);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin: 40px 0;
+            padding: 40px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* GRID PARA LOS SHORTS FINALES */
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .video-wrapper-9-16 {
+            position: relative;
+            padding-bottom: 177.77%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper-9-16 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .shorts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVEGACIÓN PARA REGRESAR -->
+        <nav class="navbar">
+            <a href="index.html" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <!-- CABECERA -->
+        <header class="project-header">
+            <h1 class="project-title">Identidad y Memoria Visual</h1>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Cliente</strong>
+                    Departamento de Arqueología USFQ
+                </div>
+                <div class="meta-item">
+                    <strong>Rol</strong>
+                    Motion Grapher & Diseñador Vectorial
+                </div>
+                <div class="meta-item">
+                    <strong>Herramientas</strong>
+                    After Effects, Illustrator
+                </div>
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: INVESTIGACIÓN Y BRIEF -->
+        <section class="content-section">
+            <h2>1. El Reto y la Investigación</h2>
+            <p>Trabajar con el Departamento de Arqueología de la USFQ supuso un reto único: traducir artefactos históricos a un lenguaje visual moderno, respetando su valor cultural. El primer paso fue sumergirme en la investigación para entender qué estaba a punto de animar.</p>
+            <p>Analicé a profundidad tres elementos clave:</p>
+            <ul>
+                <li><strong style="color: var(--text-main);">El Wairu:</strong> Antiguos dados incas utilizados tanto para el juego como en prácticas en los páramos.</li>
+                <li><strong style="color: var(--text-main);">Los Expansores:</strong> Artefactos ancestrales, similares a aretes, diseñados para alargar y modificar la oreja.</li>
+                <li><strong style="color: var(--text-main);">El Pensador:</strong> Una figura de cerámica esculpida con un alto nivel de detalle, que representa una postura reflexiva.</li>
+            </ul>
+            
+            
+        </section>
+
+        <!-- SECCIÓN 2: DEL SCRIPT AL DISEÑO -->
+        <section class="content-section">
+            <h2>2. Ilustración y Layouts</h2>
+            <p>Con el contexto histórico claro, el siguiente paso fue desglosar el <em>script</em> (guion) proporcionado por el cliente. Era fundamental que los elementos gráficos no solo acompañaran la voz en off, sino que complementaran activamente el mensaje.</p>
+            <p>Me trasladé a Adobe Illustrator, donde creé cada vector y dibujo desde cero. Diseñé los <em>layouts</em> pensando en cómo interactuarían en el espacio bidimensional, asegurándome de mantener la coherencia gráfica exigida por el departamento universitario.</p>
+            
+            
+        </section>
+
+        <!-- SECCIÓN 3: ANIMACIÓN EN AFTER EFFECTS -->
+        <section class="content-section">
+            <h2>3. Animación y Motion Graphics</h2>
+            <p>El núcleo del proyecto cobró vida en Adobe After Effects. Mi objetivo era mostrar la información de forma interactiva y retener la atención del espectador en el formato de redes sociales (Shorts).</p>
+            <p>Implementé una progresión visual dinámica: sincronicé la animación de palabras clave con el audio y utilicé interpolación avanzada de <em>keyframes</em> para darle fluidez a los objetos. Para integrar los fondos y texturas con los vectores limpios, utilicé <strong>Luma Maps</strong> y varias máscaras complejas, añadiendo profundidad y efectos sutiles que enriquecieron la narrativa sin opacar la historia de los artefactos.</p>
+            
+            
+        </section>
+
+        <!-- SECCIÓN 4: RESULTADO FINAL -->
+        <section class="content-section">
+            <h2>4. Resultado Final</h2>
+            <p>El resultado fue una serie de tres videos seleccionados como ganadores entre más de cien propuestas. Lograron el objetivo del cliente: educar sobre el patrimonio arqueológico con un estilo visual atrapante y profesional.</p>
+            
+            <div class="shorts-grid">
+                <div class="video-wrapper-9-16">
+                    <iframe src="https://www.youtube.com/embed/BEz0q-FU6aY" title="Wairu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-wrapper-9-16">
+                    <iframe src="https://www.youtube.com/embed/H8qVC4mqqN4" title="Expansores" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-wrapper-9-16">
+                    <iframe src="https://www.youtube.com/embed/OWkobZYfOX8" title="El Pensador" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>

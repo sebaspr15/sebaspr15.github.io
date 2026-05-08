@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelado Robot 3D | Sebastián Pérez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header { margin-bottom: 60px; }
+        .project-title { font-size: 4rem; line-height: 1.1; margin: 0 0 15px 0; }
+        
+        .project-meta {
+            display: flex;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .content-section p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px; }
+
+        /* IMÁGENES */
+        .img-container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Imagen vertical centrada y más angosta */
+        .img-vertical img {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Grid para imágenes lado a lado */
+        .img-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .img-grid-2 img {
+            width: 100%;
+        }
+
+        /* VIDEO */
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 40px;
+        }
+
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .img-grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVEGACIÓN -->
+        <nav class="navbar">
+            <a href="index.html" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <!-- CABECERA -->
+        <header class="project-header">
+            <h1 class="project-title">Del Concepto 2D a la Realidad 3D: Robot</h1>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Inspiración</strong>
+                    Concept Art por Jake Parker
+                </div>
+                <div class="meta-item">
+                    <strong>Rol</strong>
+                    Modelador 3D & Texture Artist
+                </div>
+                <div class="meta-item">
+                    <strong>Herramientas</strong>
+                    Autodesk Maya, Adobe Photoshop
+                </div>
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: INVESTIGACIÓN DE MATERIALES -->
+        <section class="content-section">
+            <h2>1. Investigación de Materiales</h2>
+            <p>Antes de abrir el software 3D, el primer paso para lograr un modelo creíble es entender de qué está hecho. Realicé una investigación exhaustiva de referencias visuales para identificar todos los materiales que el robot iba a necesitar: metales desgastados, pintura desconchada, plásticos rígidos y zonas de óxido.</p>
+            <p>Este estudio de superficies (surface breakdown) me permitió planificar con antelación cómo reaccionaría la luz sobre cada pieza, garantizando que el texturizado final tuviera la profundidad y el realismo adecuados.</p>
+            
+            <!-- Imagen Vertical -->
+            <div class="img-container img-vertical">
+                <img src="img/materialesRobot.png" alt="Moodboard e investigación de materiales para el robot">
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: JERARQUÍA DE FORMAS -->
+        <section class="content-section">
+            <h2>2. Análisis de Formas y Jerarquía</h2>
+            <p>Todo modelo 3D complejo, por más detallado que sea, nace de la combinación de figuras primitivas. Procedí a hacer un <em>paintover</em> sobre el concepto original para identificar la estructura base del robot.</p>
+            <p>Desglosé el diseño en <strong>formas primarias</strong> (la silueta principal y volúmenes grandes), <strong>secundarias</strong> (articulaciones y paneles de transición) y <strong>terciarias</strong> (detalles finos como tornillos, bisagras y ranuras). Este paso es crucial en el modelado 3D; al entender el diseño como un rompecabezas de figuras geométricas básicas, planificar la topología y el flujo de bordes (edge flow) en Maya se vuelve un proceso lógico y limpio, evitando problemas de malla (mesh) en etapas posteriores.</p>
+            
+            <!-- Imágenes Lado a Lado -->
+            <div class="img-container img-grid-2">
+                <img src="img/figurasRobot.png" alt="Identificación de figuras primitivas del concepto">
+                <img src="img/partesRobot.png" alt="Desglose de partes primarias, secundarias y terciarias">
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: BLUEPRINTS / REFERENCIAS -->
+        <section class="content-section">
+            <h2>3. Referencias Ortográficas (Blueprints)</h2>
+            <p>Tener solo una vista en perspectiva de un concepto suele engañar al ojo a la hora de modelar los volúmenes reales. Para solucionar esto, realicé dibujos a mano del robot estableciendo vistas ortográficas exactas: de frente, de perfil y una vista en "Pose A".</p>
+            <p>Estas imágenes son fundamentales para cargarlas en las cámaras ortográficas (Front/Side) de Maya. Me permitieron medir proporciones milimétricamente, asegurar que las piezas encajaran mecánicamente entre sí y mantener la fidelidad absoluta con el peso y el volumen del diseño de Jake Parker.</p>
+            
+            <!-- Cambia el nombre de tu imagen aquí abajo cuando la tengas -->
+            <div class="img-container">
+                <img src="img/dibujosRobot.png" alt="Dibujos a mano del robot en vistas ortográficas">
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: MODELADO Y TEXTURIZADO -->
+        <section class="content-section">
+            <h2>4. Modelado en Maya y Texturizado en Photoshop</h2>
+            <p>Con toda la planificación lista, el proceso en Maya fue estructurado y eficiente. Modelé utilizando técnicas de <em>hard-surface</em>, cuidando la topología de cuatro lados (quads) y controlando la tensión de los bordes para mantener curvas limpias bajo subdivisión.</p>
+            <p>Una vez terminado el modelo y tras realizar un despliegue UV (UV Unwrapping) optimizado, pasé a la fase de texturizado. Un requerimiento estricto de este proyecto era generar los mapas de textura exclusivamente en Adobe Photoshop. Aprovechando mi investigación de materiales inicial, pinté a mano los mapas de color, desgaste y especularidad mediante un sistema organizado de capas, modos de fusión y máscaras, demostrando adaptabilidad técnica en flujos de trabajo específicos (pipelines).</p>
+        </section>
+
+        <!-- SECCIÓN 5: RESULTADO FINAL -->
+        <section class="content-section">
+            <h2>5. Turntable Final</h2>
+            <p>El resultado es un modelo mecánico sólido, texturizado a medida y listo para ser <em>riggeado</em> o integrado en un motor de videojuegos.</p>
+            
+            <div class="video-wrapper-16-9">
+                <iframe src="https://www.youtube.com/embed/B4rXvKCJ49Q" title="Robot Turntable" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>
