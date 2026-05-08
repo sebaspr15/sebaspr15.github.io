@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sebastián Pérez Rueda | Medios Interactivos</title>
+    <!-- Fuente moderna y tecnológica -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -57,7 +58,7 @@
             background-color: rgba(7, 7, 10, 0.85);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 0; /* Reducido */
+            padding: 15px 0;
         }
 
         .nav-content {
@@ -99,7 +100,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 85vh; /* Reducido ligeramente para ver contenido antes */
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -121,14 +122,14 @@
         .hero h2 {
             font-size: 2rem;
             color: var(--text-muted);
-            margin: 0 0 20px 0; /* Reducido */
+            margin: 0 0 20px 0;
             font-weight: 300;
         }
 
         .hero p {
             font-size: 1.3rem;
             max-width: 700px;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 30px;
         }
 
         /* Botón del Hero */
@@ -155,13 +156,13 @@
 
         /* --- SECCIONES --- */
         section {
-            padding: 80px 0; /* Reducido de 120px a 80px */
+            padding: 80px 0;
             scroll-margin-top: 70px; 
         }
 
         .section-title {
             font-size: 3rem;
-            margin-bottom: 40px; /* Reducido de 60px a 40px */
+            margin-bottom: 40px;
             text-transform: uppercase;
             letter-spacing: 2px;
             border-left: 5px solid var(--accent);
@@ -182,7 +183,7 @@
 
         /* --- ARSENAL / SKILLS --- */
         .skills-container {
-            margin-top: 30px; /* Reducido de 50px */
+            margin-top: 30px;
         }
         
         .skills-grid {
@@ -222,8 +223,8 @@
         .project-block {
             background-color: var(--bg-card);
             border-radius: 20px;
-            padding: 40px; /* Reducido de 50px a 40px */
-            margin-bottom: 50px; /* Reducido de 80px a 50px */
+            padding: 40px;
+            margin-bottom: 50px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             transition: border 0.3s ease;
             border: 1px solid transparent;
@@ -234,18 +235,18 @@
         }
 
         .project-content {
-            margin-top: 25px; /* Reducido */
+            margin-top: 25px;
         }
 
         .project-content h3 {
             font-size: 2.2rem;
-            margin: 0 0 10px 0; /* Reducido */
+            margin: 0 0 10px 0;
         }
 
         .project-tags {
             font-size: 0.9rem;
             color: var(--accent);
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 15px;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -254,6 +255,7 @@
             font-size: 1.15rem;
             color: var(--text-muted);
             max-width: 95%;
+            margin-bottom: 25px;
         }
 
         .video-wrapper-16-9 {
@@ -273,7 +275,7 @@
         .shorts-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reducido de 20px a 15px */
+            gap: 15px;
             width: 100%;
         }
 
@@ -291,46 +293,58 @@
             top: 0; left: 0; width: 100%; height: 100%;
         }
 
+        /* --- BOTONES DE ENLACE --- */
+        .btn-outline {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--bg-base);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            text-shadow: none;
+        }
+
+        /* Botón específico para los proyectos */
+        .btn-project {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Botón específico para Contacto/LinkedIn */
+        .btn-linkedin {
+            padding: 12px 35px;
+            font-size: 1rem;
+        }
+
         /* --- CONTACTO --- */
         .contact-section {
             text-align: left;
-            padding-bottom: 60px; /* Reducido de 100px */
+            padding-bottom: 60px;
         }
 
         .contact-message {
             font-size: 1.8rem;
             line-height: 1.4;
             max-width: 800px;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 30px;
         }
 
         .contact-email {
             font-size: 1.3rem;
             font-weight: bold;
             display: block;
-            margin-bottom: 25px; /* Reducido */
+            margin-bottom: 25px;
             color: var(--text-main);
             user-select: all;
-        }
-
-        .btn-linkedin {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            padding: 12px 35px; /* Reducido */
-            font-size: 1rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-linkedin:hover {
-            background-color: var(--accent);
-            color: var(--bg-base);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-            text-shadow: none;
         }
 
         /* --- FOOTER --- */
@@ -353,6 +367,7 @@
 </head>
 <body>
 
+    <!-- MENÚ DE NAVEGACIÓN STICKY -->
     <nav class="navbar">
         <div class="nav-content">
             <div class="nav-logo">S<span>P.</span></div>
@@ -367,6 +382,7 @@
 
     <div class="container">
         
+        <!-- HERO -->
         <header id="inicio" class="hero">
             <h1>Sebastián <span>Pérez</span></h1>
             <h2>Diseñador de Medios Interactivos</h2>
@@ -374,6 +390,7 @@
             <a href="#proyectos" class="btn-hero">Ver mis trabajos</a>
         </header>
 
+        <!-- SOBRE MÍ Y ARSENAL -->
         <section id="background">
             <h2 class="section-title">Background</h2>
             <div class="about-text">
@@ -416,9 +433,11 @@
             </div>
         </section>
 
+        <!-- PROYECTOS -->
         <section id="proyectos">
             <h2 class="section-title">Trabajos</h2>
 
+            <!-- Proyecto 1: Arqueología -->
             <div class="project-block">
                 <div class="shorts-grid">
                     <div class="video-wrapper-9-16">
@@ -435,9 +454,13 @@
                     <h3>Identidad y Memoria: Antropología USFQ</h3>
                     <div class="project-tags">Motion Graphics // After Effects // Illustrator</div>
                     <p class="project-desc">Dar vida a la historia a través del diseño. Este proyecto consistió en interpretar la imagen de marca del Departamento de Antropología y crear ilustraciones vectoriales para luego animarlas de forma dinámica. Utilizando luma maps, máscaras complejas y un timing meticuloso, estas piezas formaron parte de los ganadores en un concurso con más de 100 propuestas universitarias.</p>
+                    
+                    <!-- Botón conectado a la página del proceso -->
+                    <a href="proyecto-arqueologia.html" class="btn-outline btn-project">Ver Proceso Completo</a>
                 </div>
             </div>
 
+            <!-- Proyecto 2: Robot -->
             <div class="project-block">
                 <div class="video-wrapper-16-9">
                     <iframe src="https://www.youtube.com/embed/B4rXvKCJ49Q" title="Robot Turntable" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -446,9 +469,13 @@
                     <h3>Del Concepto 2D a la Realidad 3D</h3>
                     <div class="project-tags">Modelado 3D // Maya // Photoshop</div>
                     <p class="project-desc">La magia de tomar una idea plana y darle volumen. Inspirado en una ilustración original de Jake Parker, construí y modelé la estructura mecánica completa de este robot dentro de Autodesk Maya. El trabajo de texturizado se realizó meticulosamente en Photoshop para otorgarle carácter, desgaste realista y personalidad tridimensional.</p>
+                    
+                    <!-- Botón conectado a la página del proceso -->
+                    <a href="proyecto-robot.html" class="btn-outline btn-project">Ver Proceso Completo</a>
                 </div>
             </div>
 
+            <!-- Proyecto 3: Parkour -->
             <div class="project-block">
                 <div class="video-wrapper-16-9">
                     <iframe src="https://www.youtube.com/embed/s9_jJGyQyP4" title="Parkour Animation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -457,10 +484,14 @@
                     <h3>Fluidez y Energía: Parkour</h3>
                     <div class="project-tags">Animación 3D // Biomecánica // Maya</div>
                     <p class="project-desc">Animar no es solo mover un personaje, es entender la física y el peso de cada acción. Utilizando el rig del "Ultimate Walker", coreografié esta secuencia de parkour enfocándome en las físicas del impacto, la fluidez del movimiento continuo y la fuerza visual que transmite una buena ejecución de keyframes.</p>
+                    
+                    <!-- Botón conectado a la página del proceso -->
+                    <a href="proyecto-parkour.html" class="btn-outline btn-project">Ver Proceso Completo</a>
                 </div>
             </div>
         </section>
 
+        <!-- CONTACTO -->
         <section id="contacto" class="contact-section">
             <h2 class="section-title" style="border-left-color: transparent; padding-left: 0;">Iniciemos algo.</h2>
             <div class="contact-message">
@@ -469,12 +500,13 @@
             
             <span class="contact-email">dsperez@estud.usfq.edu.ec</span>
             
-            <a href="https://www.linkedin.com/in/sebastian-perez-60a74b288/" target="_blank" class="btn-linkedin">
+            <a href="https://www.linkedin.com/in/sebastian-perez-60a74b288/" target="_blank" class="btn-outline btn-linkedin">
                 Conectar en LinkedIn
             </a>
         </section>
     </div>
 
+    <!-- FOOTER -->
     <footer>
         &copy; 2026 Sebastián Pérez Rueda. Diseñado y desarrollado con pasión.
     </footer>
