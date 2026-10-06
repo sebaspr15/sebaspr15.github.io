@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Musical en After Effects | Sebastián Pérez</title>
+    <meta name="description" content="Video musical creado por completo en After Effects: personaje diseñado en Illustrator, rigging con huesos, luma maps, partículas y efectos.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header { margin-bottom: 60px; }
+        .project-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-title { font-size: 4rem; line-height: 1.1; margin: 10px 0 15px 0; }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .content-section p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px; }
+        .content-section strong { color: var(--text-main); }
+
+        /* IMÁGENES (para cuando agregues capturas del proceso) */
+        .img-container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Lista de técnicas */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .tech-item strong { display: block; color: #fff; margin-bottom: 5px; }
+        .tech-item span { color: var(--text-muted); }
+
+        /* VIDEO */
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 40px;
+        }
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--bg-base);
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVEGACIÓN -->
+        <nav class="navbar">
+            <a href="index.html#cat-diseno" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <!-- CABECERA -->
+        <header class="project-header">
+            <div class="project-kicker">Diseño &amp; Motion Graphics</div>
+            <h1 class="project-title">Video Musical: Motion Graphics Total</h1>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Formato</strong>
+                    Video musical animado
+                </div>
+                <div class="meta-item">
+                    <strong>Rol</strong>
+                    Diseño, ilustración, rigging y animación
+                </div>
+                <div class="meta-item">
+                    <strong>Herramientas</strong>
+                    Adobe After Effects, Adobe Illustrator
+                </div>
+            </div>
+
+            <div class="video-wrapper-16-9">
+                <iframe src="https://www.youtube.com/embed/SJfPNHQbglQ" title="Video Musical en After Effects" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: EL RETO -->
+        <section class="content-section">
+            <h2>1. El Reto</h2>
+            <p>El objetivo era crear un video musical completo <strong>sin salir de After Effects</strong> para la animación: cada personaje, transición y efecto debía construirse y animarse dentro de la herramienta. Esto convirtió el proyecto en una exploración de casi todo lo que After Effects ofrece, desde la animación de personajes hasta los sistemas de partículas.</p>
+        </section>
+
+        <!-- SECCIÓN 2: DISEÑO EN ILLUSTRATOR -->
+        <section class="content-section">
+            <h2>2. Diseño del Personaje y los Elementos</h2>
+            <p>Todo el universo visual nació en Adobe Illustrator. Diseñé el personaje principal y cada uno de los elementos que aparecen en el video como ilustraciones vectoriales.</p>
+            <p>Preparar los archivos pensando en la animación fue clave: separar el personaje en capas independientes (cabeza, torso, brazos, piernas) es lo que después permite articularlo en After Effects sin deformaciones extrañas.</p>
+
+            <!-- Cuando tengas capturas, agrega aquí tus imágenes, por ejemplo:
+            <div class="img-container">
+                <img src="img/personajeVideoMusical.png" alt="Diseño del personaje en Illustrator">
+            </div>
+            -->
+        </section>
+
+        <!-- SECCIÓN 3: RIGGING -->
+        <section class="content-section">
+            <h2>3. Rigging con Huesos</h2>
+            <p>Una vez importado el personaje, le construí un sistema de huesos dentro de After Effects. Este rig permite mover brazos, piernas y cuerpo de forma natural, controlando cada articulación en lugar de animar capa por capa.</p>
+            <p>Con el personaje riggeado, la animación se enfocó en lo importante: el ritmo, la intención de cada gesto y la sincronía con la música.</p>
+        </section>
+
+        <!-- SECCIÓN 4: MOTION GRAPHICS Y EFECTOS -->
+        <section class="content-section">
+            <h2>4. Motion Graphics, Luma Maps y Partículas</h2>
+            <p>Alrededor del personaje construí la narrativa visual del video con motion graphics. Las transiciones y revelados se resolvieron con <strong>luma maps</strong>, y la atmósfera se completó con <strong>partículas y efectos</strong> que acompañan la energía de la canción.</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <strong>Diseño vectorial</strong>
+                    <span>Personaje y elementos creados en Illustrator.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Rigging con huesos</strong>
+                    <span>Articulación del personaje para animarlo con naturalidad.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Luma maps</strong>
+                    <span>Transiciones y revelados basados en luminancia.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Partículas y efectos</strong>
+                    <span>Atmósfera y energía visual sincronizadas con la música.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: RESULTADO -->
+        <section class="content-section">
+            <h2>5. Resultado</h2>
+            <p>Un video musical en el que diseño, animación de personaje y motion graphics conviven en una sola pieza, creada de principio a fin en After Effects.</p>
+            <a href="https://youtu.be/SJfPNHQbglQ" target="_blank" rel="noopener" class="btn-outline">Ver en YouTube</a>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>
