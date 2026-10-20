@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcuRoute: App de Rutas de Bus | Sebastián Pérez</title>
+    <meta name="description" content="EcuRoute: prototipo en Figma de una app que rastrea los buses públicos y guía al usuario según su destino. Incluye análisis de mercado y video promocional.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header { margin-bottom: 60px; }
+        .project-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-title { font-size: 4rem; line-height: 1.1; margin: 10px 0 15px 0; }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .content-section p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px; }
+        .content-section strong { color: var(--text-main); }
+
+        /* IMÁGENES (para cuando agregues capturas del proceso) */
+        .img-container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Lista de técnicas */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .tech-item strong { display: block; color: #fff; margin-bottom: 5px; }
+        .tech-item span { color: var(--text-muted); }
+
+        /* VIDEO */
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 40px;
+        }
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--bg-base);
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .steps { counter-reset: step; list-style: none; padding: 0; margin: 30px 0 0 0; }
+        .steps li {
+            position: relative;
+            padding: 0 0 25px 55px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute; left: 0; top: 0;
+            width: 34px; height: 34px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            color: var(--accent);
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .steps li strong { display: block; color: #fff; }
+
+        .cover-figma {
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        .cover-figma img { display: block; width: 100%; max-width: 900px; height: auto; margin: 0 auto; }
+
+        .figma-embed {
+            position: relative;
+            height: 640px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1e1e1e;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-top: 30px;
+        }
+        .figma-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn-row .btn-outline { margin-top: 30px; }
+
+        @media (max-width: 768px) { .figma-embed { height: 520px; } }
+
+        /* Problema -> solución */
+        .ps-table { margin-top: 30px; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
+        .ps-head, .ps-row { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center; }
+        .ps-head { background: var(--bg-card); font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .ps-head div, .ps-row div { padding: 16px 20px; }
+        .ps-head .h-prob { color: #ff6b6b; }
+        .ps-head .h-sol { color: var(--accent); }
+        .ps-row { border-top: 1px solid rgba(255,255,255,0.06); }
+        .ps-row .prob { color: var(--text-muted); }
+        .ps-row .sol { color: var(--text-main); }
+        .ps-row .arrow { color: var(--accent); text-align: center; padding: 0; }
+
+        h3.sub { font-size: 1.3rem; margin: 50px 0 15px 0; }
+
+        /* ODS */
+        .ods-row { display: grid; grid-template-columns: auto auto 1fr; gap: 15px; align-items: stretch; }
+        .ods-badge { border-radius: 12px; padding: 18px 20px; color: #fff; min-width: 150px; }
+        .ods-badge .n { font-size: 2.4rem; font-weight: 700; line-height: 1; }
+        .ods-badge .t { font-size: 0.9rem; font-weight: 600; margin-top: 6px; line-height: 1.3; }
+        .ods-11 { background: #FD9D24; }
+        .ods-13 { background: #3F7E44; }
+        .ods-goals { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px 20px; margin: 0; list-style: none; }
+        .ods-goals li { color: var(--text-muted); padding-left: 20px; position: relative; }
+        .ods-goals li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; }
+
+        /* Buyer persona */
+        .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .persona { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 25px; }
+        .persona-top { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; }
+        .avatar { width: 52px; height: 52px; border-radius: 50%; background: #c62828; color: #fff; font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .persona-top strong { color: #fff; display: block; font-size: 1.1rem; }
+        .persona-top span { color: var(--text-muted); font-size: 0.95rem; }
+        .persona dl { margin: 0; }
+        .persona dt { color: var(--accent); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 12px; }
+        .persona dd { margin: 2px 0 0 0; color: var(--text-muted); }
+        .persona blockquote { margin: 15px 0 0 0; padding-left: 15px; border-left: 2px solid #c62828; color: var(--text-main); font-style: italic; }
+
+        /* Números */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .stat { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 22px; }
+        .stat .v { font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1.1; }
+        .stat .l { color: var(--text-muted); font-size: 0.95rem; margin-top: 6px; }
+        .stat.hl { border-color: rgba(0,240,255,0.35); }
+        .stat.hl .v { color: var(--accent); }
+        .note { font-size: 0.95rem !important; margin-top: 15px; }
+
+        @media (max-width: 768px) {
+            .ps-head, .ps-row { grid-template-columns: 1fr 28px 1fr; }
+            .ps-head div, .ps-row div { padding: 12px; font-size: 0.95rem; }
+            .ods-row { grid-template-columns: 1fr 1fr; }
+            .ods-goals { grid-column: 1 / -1; }
+            .ods-badge { min-width: 0; }
+            .persona-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr 1fr; }
+            .stat .v { font-size: 1.8rem; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVEGACIÓN -->
+        <nav class="navbar">
+            <a href="index.html#cat-programacion" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <!-- CABECERA -->
+        <header class="project-header">
+            <div class="project-kicker">Programación &amp; Interactivos · UX/UI</div>
+            <h1 class="project-title">EcuRoute: App de Rutas de Bus</h1>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Proyecto</strong>
+                    Prototipo de aplicación móvil
+                </div>
+                <div class="meta-item">
+                    <strong>Equipo</strong>
+                    Trabajo colaborativo
+                </div>
+                <div class="meta-item">
+                    <strong>Herramientas</strong>
+                    Figma, Canva, edición de video
+                </div>
+            </div>
+
+            <div class="cover-figma">
+                <img src="img/EcuRoute_Figma.png" alt="Pantallas del prototipo de EcuRoute en Figma: inicio, mapa, menú, buscador, pagos, guardar ubicación y ubicación">
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: LA IDEA -->
+        <section class="content-section">
+            <h2>1. La Idea</h2>
+            <p>Moverse en bus por la ciudad suele implicar dudas: qué línea tomar, dónde esperarla y cuánto falta para que llegue. <strong>EcuRoute</strong> es una app que rastrea los buses públicos y le muestra al usuario un mapa con los buses que le sirven para llegar a su destino.</p>
+            <p>El usuario solo escribe a dónde quiere ir, y la app le indica qué bus tomar y dónde encontrarlo.</p>
+        </section>
+
+        <!-- SECCIÓN 2: ANÁLISIS DE MERCADO -->
+        <section class="content-section">
+            <h2>2. Análisis de Mercado</h2>
+            <p>Antes de diseñar pantallas, validamos la idea con un análisis de mercado: qué problema resolvemos, a quién, con qué impacto y si el negocio es viable.</p>
+
+            <h3 class="sub">Problema y solución</h3>
+            <p>Cada función de la app nace de una frustración concreta de quien usa bus todos los días:</p>
+            <div class="ps-table">
+                <div class="ps-head"><div class="h-prob">Problema</div><div></div><div class="h-sol">Solución EcuRoute</div></div>
+                <div class="ps-row"><div class="prob">Falta de información clara y actualizada</div><div class="arrow">→</div><div class="sol">Información real y actualizada sobre rutas y horarios</div></div>
+                <div class="ps-row"><div class="prob">Incertidumbre sobre las rutas y tiempos de viaje</div><div class="arrow">→</div><div class="sol">Explicación de cómo llegar al destino elegido</div></div>
+                <div class="ps-row"><div class="prob">Falta de alertas en tiempo real</div><div class="arrow">→</div><div class="sol">Alertas en tiempo real sobre cambios y emergencias</div></div>
+                <div class="ps-row"><div class="prob">Pago de peajes y pasajes</div><div class="arrow">→</div><div class="sol">Pago a través de la aplicación</div></div>
+            </div>
+
+            <h3 class="sub">Objetivos de Desarrollo Sostenible</h3>
+            <p>EcuRoute no solo resuelve un problema de comodidad: al hacer el transporte público más fácil de usar, motiva a más personas a dejar el auto.</p>
+            <div class="ods-row">
+                <div class="ods-badge ods-11"><div class="n">11</div><div class="t">Ciudades y comunidades sostenibles</div></div>
+                <div class="ods-badge ods-13"><div class="n">13</div><div class="t">Acción por el clima</div></div>
+                <ul class="ods-goals">
+                    <li>Servicio amigable</li>
+                    <li>Brindar información y ayuda</li>
+                    <li>Alentar la movilización sostenible</li>
+                    <li>Disminuir tráfico y contaminación</li>
+                </ul>
+            </div>
+
+            <h3 class="sub">Buyer persona</h3>
+            <p>Definimos dos perfiles: el usuario local que usa bus a diario, y el visitante extranjero que no conoce las rutas de la ciudad.</p>
+            <div class="persona-grid">
+                <div class="persona">
+                    <div class="persona-top">
+                        <div class="avatar">D</div>
+                        <div><strong>Daniela, 21 años</strong><span>Estudiante universitaria · Quito</span></div>
+                    </div>
+                    <dl>
+                        <dt>Rutina</dt>
+                        <dd>Toma dos buses al día para ir a la universidad y a sus prácticas. Siempre tiene el celular en la mano.</dd>
+                        <dt>Frustraciones</dt>
+                        <dd>No saber cuánto falta para que pase su bus, llegar tarde por desvíos que nadie avisa y andar buscando monedas para el pasaje.</dd>
+                        <dt>Lo que busca</dt>
+                        <dd>Una app rápida, clara y gratuita que le diga qué bus tomar y cuándo llega.</dd>
+                    </dl>
+                    <blockquote>"Si supiera cuándo pasa el bus, no tendría que salir 30 minutos antes."</blockquote>
+                </div>
+                <div class="persona">
+                    <div class="persona-top">
+                        <div class="avatar">M</div>
+                        <div><strong>Mark, 34 años</strong><span>Turista extranjero · De visita en Ecuador</span></div>
+                    </div>
+                    <dl>
+                        <dt>Rutina</dt>
+                        <dd>Recorre la ciudad durante una semana y quiere moverse como local sin gastar en taxis.</dd>
+                        <dt>Frustraciones</dt>
+                        <dd>No conoce las rutas, no entiende los letreros de los buses y le preocupa perderse o bajarse en la parada equivocada.</dd>
+                        <dt>Lo que busca</dt>
+                        <dd>Indicaciones paso a paso hasta su destino y poder pagar sin efectivo.</dd>
+                    </dl>
+                    <blockquote>"Quiero usar el transporte público, pero no sé ni por dónde empezar."</blockquote>
+                </div>
+            </div>
+
+            <h3 class="sub">Números</h3>
+            <p>Para proyectar las ganancias asumimos una adopción inicial conservadora durante el primer mes:</p>
+            <div class="stats">
+                <div class="stat"><div class="v">1.000</div><div class="l">usuarios locales el primer mes</div></div>
+                <div class="stat"><div class="v">50</div><div class="l">usuarios extranjeros el primer mes</div></div>
+                <div class="stat"><div class="v">$2.500</div><div class="l">costo de desarrollo (inversión inicial)</div></div>
+                <div class="stat hl"><div class="v">6 meses</div><div class="l">para recuperar la inversión (payback)</div></div>
+            </div>
+            <p class="note">Si la inversión inicial cubre el costo de desarrollo, el proyecto se paga solo en medio año.</p>
+
+            <a href="https://canva.link/1hokltba7bzxriy" target="_blank" rel="noopener" class="btn-outline">Ver Análisis Completo</a>
+        </section>
+
+        <!-- SECCIÓN 3: PROTOTIPO EN FIGMA -->
+        <section class="content-section">
+            <h2>3. Diseño del Prototipo en Figma</h2>
+            <p>Con el análisis como base, diseñamos el prototipo completo en Figma. Elegimos una identidad en rojo intenso que se reconoce rápido en la calle, con íconos simples y un flujo pensado para usarse con una sola mano mientras se camina hacia la parada.</p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <strong>Inicio y Home</strong>
+                    <span>Una pantalla de bienvenida directa y un mapa que muestra los buses cercanos y la ubicación del usuario.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Buscador</strong>
+                    <span>La pregunta clave, "¿A dónde quieres ir?", siempre visible, con ubicaciones recientes y guardadas.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Ubicaciones guardadas</strong>
+                    <span>Lugares frecuentes a un toque, y un pin que se arrastra en el mapa para encontrar la ruta.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Pagos</strong>
+                    <span>Una billetera para recargar fondos y pagar el pasaje desde la app.</span>
+                </div>
+            </div>
+            <p style="margin-top:30px;">Puedes probar el prototipo interactivo aquí mismo:</p>
+            <div class="figma-embed">
+                <iframe src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fproto%2FOjt4wkMFIVTYyAq5XZFE7p%2FEcuRoute%3Fnode-id%3D0-1%26t%3DxjKT6L25j7EzdJEy-1" title="Prototipo interactivo de EcuRoute en Figma" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="btn-row">
+                <a href="https://www.figma.com/proto/Ojt4wkMFIVTYyAq5XZFE7p/EcuRoute?node-id=0-1&amp;t=xjKT6L25j7EzdJEy-1" target="_blank" rel="noopener" class="btn-outline">Abrir en Figma</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: VIDEO -->
+        <section class="content-section">
+            <h2>4. Video del Producto</h2>
+            <p>Para presentar EcuRoute hicimos un video promocional usando <strong>memes</strong>. Conociendo a nuestro buyer persona, sabíamos que el humor era la forma más directa de captar su atención: el video muestra el producto de forma divertida, con situaciones con las que cualquiera que use bus se siente identificado.</p>
+            <div class="video-wrapper-16-9">
+                <iframe src="https://www.youtube.com/embed/D3X4m6iHguA" title="Video promocional de EcuRoute" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: RESULTADO -->
+        <section class="content-section">
+            <h2>5. Resultado</h2>
+            <p>Un producto pensado de punta a punta: una idea validada con análisis de mercado, un prototipo navegable en Figma y una comunicación diseñada para su público.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>
