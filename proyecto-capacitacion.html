@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Interactivo de Seguridad y Salud Ocupacional | Sebastián Pérez</title>
+    <meta name="description" content="Diseño de un curso corporativo interactivo y gamificado de Seguridad y Salud Ocupacional en Genially, con personajes, videos y actividades.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header { margin-bottom: 60px; }
+        .project-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-title { font-size: 4rem; line-height: 1.1; margin: 10px 0 15px 0; }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .content-section p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px; }
+        .content-section strong { color: var(--text-main); }
+
+        /* IMÁGENES (para cuando agregues capturas del proceso) */
+        .img-container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Lista de técnicas */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .tech-item strong { display: block; color: #fff; margin-bottom: 5px; }
+        .tech-item span { color: var(--text-muted); }
+
+        /* VIDEO */
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 40px;
+        }
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--bg-base);
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .steps { counter-reset: step; list-style: none; padding: 0; margin: 30px 0 0 0; }
+        .steps li {
+            position: relative;
+            padding: 0 0 25px 55px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute; left: 0; top: 0;
+            width: 34px; height: 34px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            color: var(--accent);
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .steps li strong { display: block; color: #fff; }
+
+        /* Cabecera con video vertical */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .video-wrapper-9-16 {
+            position: relative;
+            padding-bottom: 177.77%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-wrapper-9-16 iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .hero-split p { font-size: 1.2rem; color: var(--text-muted); margin: 0 0 20px 0; }
+        .hero-split p strong { color: var(--text-main); }
+
+        .content-section .quote-big {
+            font-size: 1.6rem;
+            line-height: 1.4;
+            color: #fff;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin: 0 0 30px 0;
+        }
+        .quote-big span { display: block; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .chip {
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+        .chip.new { border-color: rgba(0,240,255,0.5); color: var(--accent); }
+
+        .content-section code {
+            font-family: Consolas, Menlo, monospace;
+            font-size: 0.95em;
+            background: var(--bg-card);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .img-caption { font-size: 0.9rem !important; color: var(--text-muted); margin: 10px 0 0 0 !important; text-align: center; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        @media (max-width: 768px) {
+            .hero-split { grid-template-columns: 1fr; gap: 25px; }
+            .hero-split .video-wrapper-9-16 { max-width: 320px; width: 100%; margin: 0 auto; padding-bottom: 0; height: 569px; }
+            .content-section .quote-big { font-size: 1.3rem; }
+        }
+
+        .shot { max-width: 820px; margin-left: auto; margin-right: auto; }
+        .shot img { width: 100%; }
+        .tech-grid-3 { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 768px) { .tech-grid-3 { grid-template-columns: 1fr; } }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NAVEGACIÓN -->
+        <nav class="navbar">
+            <a href="index.html#cat-capacitacion" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <!-- CABECERA -->
+        <header class="project-header">
+            <div class="project-kicker">Diseño de Capacitaciones</div>
+            <h1 class="project-title">Seguridad y Salud Ocupacional: Curso Interactivo</h1>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Cliente</strong>
+                    Banco Solidario
+                </div>
+                <div class="meta-item">
+                    <strong>Rol</strong>
+                    Diseño instruccional, visual e interactivo
+                </div>
+                <div class="meta-item">
+                    <strong>Herramientas</strong>
+                    Genially, Magnific
+                </div>
+            </div>
+
+            <div class="img-container shot">
+                <img src="img/Portada_curso.png" alt="Portada del curso de Seguridad y Salud Ocupacional con personajes ilustrados">
+            </div>
+        </header>
+
+        <!-- SECCIÓN 1: EL RETO -->
+        <section class="content-section">
+            <h2>1. El Reto: Que Capacitarse No Sea Aburrido</h2>
+            <p>Diseño capacitaciones para empresas. El cliente me entrega el contenido, y mi trabajo es convertirlo en una experiencia que la gente quiera recorrer. La mayoría de cursos corporativos son <strong>presentaciones o videos hablados</strong>: el colaborador solo mira y avanza, y la información se olvida rápido.</p>
+            <p>Mi propuesta es lo opuesto: <strong>cursos interactivos y gamificados</strong>, con personajes propios, videos y actividades en las que la persona participa, explora y pone a prueba lo que aprende.</p>
+        </section>
+
+        <!-- SECCIÓN 2: PROCESO -->
+        <section class="content-section">
+            <h2>2. Mi Proceso</h2>
+            <p>Cada curso pasa por las mismas etapas, desde entender el tema hasta entregar una experiencia lista para publicar:</p>
+            <ol class="steps">
+                <li><strong>Familiarizarme con el contenido</strong>Estudio el material que entrega el cliente hasta entender el tema a fondo: qué es indispensable, qué es complementario y qué necesita aprender realmente el colaborador.</li>
+                <li><strong>Planificar el curso</strong>Defino los objetivos de aprendizaje y divido la información en módulos cortos, con un recorrido claro de principio a fin.</li>
+                <li><strong>Diseñar la experiencia</strong>Decido qué contenido se explora con clics, qué se cuenta en video y qué se convierte en un reto o un juego.</li>
+                <li><strong>Crear el universo visual</strong>Diseño personajes, ambientes, portadas, fondos y videos con una misma línea gráfica para todo el curso.</li>
+                <li><strong>Construir en Genially</strong>Monto el curso con sus interacciones, animaciones, sonidos y actividades gamificadas.</li>
+                <li><strong>Revisar y ajustar</strong>Pruebo el recorrido completo y lo ajusto con el cliente hasta que el contenido quede fiel y la experiencia fluya.</li>
+            </ol>
+        </section>
+
+        <!-- SECCIÓN 3: CONTENIDO VISUAL -->
+        <section class="content-section">
+            <h2>3. Creación de Contenido Visual</h2>
+            <p>Todo el material gráfico del curso lo creo yo: <strong>personajes, ambientes, portadas, fondos y videos</strong>. Para producirlo uso Magnific, trabajando con un sistema de nodos que conecta cada recurso con sus referencias.</p>
+            <div class="img-container shot">
+                <img src="img/Magnific_curso.png" alt="Espacio de trabajo en Magnific con nodos organizados en imágenes de riesgos, videos de seguridad ocupacional, personajes y portadas">
+                <p class="img-caption">Espacio de trabajo en Magnific: imágenes de riesgos, videos, personajes y portadas conectados por nodos.</p>
+            </div>
+            <p>Trabajar con nodos me permite <strong>mantener la coherencia visual</strong>: los mismos personajes aparecen con el mismo estilo en cada escena, video y portada, para que el curso se sienta como una sola historia y no como una colección de imágenes sueltas.</p>
+        </section>
+
+        <!-- SECCIÓN 4: INFORMACIÓN INTERACTIVA -->
+        <section class="content-section">
+            <h2>4. Información que se Explora</h2>
+            <p>En lugar de una lista larga de conceptos, la información se divide en partes que el colaborador descubre a su ritmo. Aquí, los seis tipos de riesgo laboral se presentan sobre el edificio del banco: <strong>físicos, de seguridad, químicos, biológicos, ergonómicos y psicosociales</strong>. Cada categoría tiene su color e ícono, y al hacer clic se abre su explicación.</p>
+            <div class="img-container shot">
+                <img src="img/curso_01.png" alt="Pantalla del curso con el edificio del banco y seis botones de colores para cada tipo de riesgo laboral">
+                <p class="img-caption">Los tipos de riesgo divididos en botones interactivos.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: GAMIFICACIÓN -->
+        <section class="content-section">
+            <h2>5. Gamificación: Aprender Jugando</h2>
+            <p>La teoría se pone a prueba con actividades. En <strong>"Seguridad en la oficina"</strong>, el colaborador tiene que encontrar las condiciones inseguras escondidas en una escena ilustrada, haciendo clic sobre ellas contra el reloj.</p>
+            <div class="img-container shot">
+                <img src="img/curso_02.png" alt="Actividad gamificada: escena de oficina donde hay que identificar condiciones inseguras, con contador y temporizador">
+                <p class="img-caption">Actividad para identificar riesgos de seguridad ocupacional.</p>
+            </div>
+            <div class="tech-grid tech-grid-3">
+                <div class="tech-item">
+                    <strong>Un reto claro</strong>
+                    <span>Una sola instrucción: encontrar las condiciones inseguras.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Contador y tiempo</strong>
+                    <span>El progreso y el temporizador dan sensación de juego y motivan a terminar.</span>
+                </div>
+                <div class="tech-item">
+                    <strong>Aprendizaje aplicado</strong>
+                    <span>No se memoriza una definición: se reconoce el riesgo en un espacio parecido al real.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: PRESENTAR LA INFORMACIÓN -->
+        <section class="content-section">
+            <h2>6. Contenido en Formatos Cortos</h2>
+            <p>Incluso la información más formal se presenta en piezas cortas e interactivas. Las responsabilidades en prevención de riesgos laborales se muestran como <strong>tarjetas que giran</strong>: el colaborador lee el título, hace clic y descubre la definición.</p>
+            <div class="img-container shot">
+                <img src="img/curso_03.png" alt="Tarjetas interactivas que giran para mostrar las responsabilidades en prevención de riesgos laborales">
+                <p class="img-caption">Tarjetas giratorias con las responsabilidades del colaborador.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: RESULTADO -->
+        <section class="content-section">
+            <h2>7. Resultado</h2>
+            <p>Un curso de Seguridad y Salud Ocupacional que se recorre como una experiencia y no como una presentación: personajes con los que el colaborador se identifica, información que se descubre con clics y actividades que convierten la teoría en práctica.</p>
+            <p>Por confidencialidad no puedo mostrar el curso completo. Estas pantallas muestran las ideas con las que diseño cada capacitación para que sea interactiva y gamificada.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>
