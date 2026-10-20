@@ -442,6 +442,13 @@
             margin: 0 auto;
         }
 
+        .cover-course {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .cover-course img { display: block; width: 100%; max-width: 820px; height: auto; margin: 0 auto; }
+
         /* Proyecto con un solo video vertical: video a un lado, texto al otro */
         .project-split {
             display: grid;
@@ -650,7 +657,7 @@
                 <a href="#cat-diseno" class="area-chip" data-goto><span class="num">02</span> Diseño &amp; Motion Graphics</a>
                 <a href="#cat-programacion" class="area-chip" data-goto><span class="num">03</span> Programación &amp; Interactivos</a>
                 <a href="#cat-videojuegos" class="area-chip" data-goto><span class="num">04</span> Videojuegos</a>
-                <a href="#cat-capacitacion" class="area-chip" data-goto><span class="num">05</span> Capacitación</a>
+                <a href="#cat-capacitacion" class="area-chip" data-goto><span class="num">05</span> Diseño de Capacitaciones</a>
             </div>
 
             <div class="hero-actions">
@@ -903,6 +910,22 @@
                     </div>
                 </div>
 
+                <!-- Proyecto: Sistema de riego automático (Arduino) -->
+                <div class="project-block project-split">
+                    <div class="video-wrapper-9-16">
+                        <iframe src="https://www.youtube.com/embed/m2ALoOR7IkQ" title="Sistema de riego automático con Arduino" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-content">
+                        <h4>Escuchar a las Plantas: Riego Automático con Arduino</h4>
+                        <div class="project-tags">Arduino // Electrónica // Sensores // Computación Física</div>
+                        <p class="project-desc">Los humanos y las plantas no hablamos el mismo idioma, y solemos notar que una planta necesita ayuda cuando ya se está marchitando. Este sistema traduce sus necesidades: mide la humedad del suelo y la riega sola, sugiere moverla al sol o a la sombra según la luz, vigila que haya agua en el depósito y lo muestra todo en una pantalla LCD. Un dispositivo prácticamente independiente.</p>
+                        <div class="project-links">
+                            <a href="proyecto-riego.html" class="btn-outline btn-project">Ver Proceso Completo</a>
+                            <a href="https://youtube.com/shorts/m2ALoOR7IkQ" target="_blank" rel="noopener" class="btn-ghost btn-project">Ver en YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="project-soon">
                     <h4>Más proyectos en camino</h4>
                     <p>Estoy documentando más proyectos de desarrollo e interacción física. Muy pronto aquí:</p>
@@ -913,7 +936,7 @@
                         </div>
                         <div class="soon-item">
                             <strong>Arduino</strong>
-                            <span>Prototipos físicos con sensores, luces y movimiento.</span>
+                            <span>Más prototipos físicos con sensores y actuadores.</span>
                         </div>
                     </div>
                 </div>
@@ -967,32 +990,24 @@
                 </div>
             </div>
 
-            <!-- ============ CATEGORÍA 05: CAPACITACIÓN ============ -->
+            <!-- ============ CATEGORÍA 05: CAPACITACIÓN (DISEÑO DE CURSOS) ============ -->
             <div class="category" id="cat-capacitacion" data-category="capacitacion">
                 <div class="category-header">
                     <span class="category-num">05</span>
-                    <h3>Capacitación</h3>
-                    <p>Cursos, talleres y certificaciones que complementan mi formación.</p>
+                    <h3>Diseño de Capacitaciones</h3>
+                    <p>Cursos corporativos interactivos y gamificados: personajes, videos y experiencias en Genially.</p>
                 </div>
 
-                <div class="cert-grid">
-                    <!--
-                        PLANTILLA PARA UN CURSO O CERTIFICADO (copia una tarjeta por cada uno
-                        y borra la tarjeta "En construcción"):
-
-                    <div class="cert-card">
-                        <div class="cert-year">2026</div>
-                        <h4>Nombre del curso o certificación</h4>
-                        <div class="cert-org">Institución (USFQ, Coursera, Domestika, Unity Learn...)</div>
-                        <p>Qué aprendiste en una o dos líneas.</p>
-                        <a href="https://link-al-certificado" target="_blank" rel="noopener">Ver certificado →</a>
+                <!-- Proyecto: Curso de Seguridad y Salud Ocupacional -->
+                <div class="project-block">
+                    <div class="cover-course">
+                        <img src="img/Portada_curso.png" alt="Portada del curso interactivo de Seguridad y Salud Ocupacional con personajes ilustrados" loading="lazy">
                     </div>
-                    -->
-
-                    <div class="cert-card cert-soon">
-                        <div class="cert-year">Próximamente</div>
-                        <h4>En construcción</h4>
-                        <p>Aquí aparecerán mis cursos, talleres y certificaciones.</p>
+                    <div class="project-content">
+                        <h4>Seguridad y Salud Ocupacional: Curso Interactivo</h4>
+                        <div class="project-tags">Diseño Instruccional // Gamificación // Genially // Personajes y Video</div>
+                        <p class="project-desc">Diseño capacitaciones para empresas: ellas me entregan el contenido y yo lo convierto en una experiencia interactiva. En lugar de una presentación o un video hablado, este curso tiene personajes propios, videos, información que se explora con clics y actividades gamificadas, como encontrar los riesgos escondidos en una oficina contra el reloj.</p>
+                        <a href="proyecto-capacitacion.html" class="btn-outline btn-project">Ver Proceso Completo</a>
                     </div>
                 </div>
             </div>
