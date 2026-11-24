@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martina Caldas: Portafolio de Modas | Sebastián Pérez</title>
+    <meta name="description" content="Portafolio web de la diseñadora de modas Martina Caldas: curaduría de proyectos, artes de portada, diseño UX/UI y desarrollo.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header { margin-bottom: 60px; }
+        .project-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-title { font-size: 4rem; line-height: 1.1; margin: 10px 0 15px 0; }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .content-section p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px; }
+        .content-section strong { color: var(--text-main); }
+
+        /* IMÁGENES (para cuando agregues capturas del proceso) */
+        .img-container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Lista de técnicas */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .tech-item strong { display: block; color: #fff; margin-bottom: 5px; }
+        .tech-item span { color: var(--text-muted); }
+
+        /* VIDEO */
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 40px;
+        }
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--bg-base);
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .steps { counter-reset: step; list-style: none; padding: 0; margin: 30px 0 0 0; }
+        .steps li {
+            position: relative;
+            padding: 0 0 25px 55px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute; left: 0; top: 0;
+            width: 34px; height: 34px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            color: var(--accent);
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .steps li strong { display: block; color: #fff; }
+
+        /* Capturas dentro de un marco de navegador */
+        .browser {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #1a1a22;
+            margin: 30px 0 0 0;
+        }
+        .browser .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #1f1f28; }
+        .browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3a46; display: block; }
+        .browser .bar span { margin-left: 10px; font-size: 0.75rem; color: var(--text-muted); background: #121218; padding: 3px 12px; border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .browser img { display: block; width: 100%; height: auto; }
+        .shot-caption { font-size: 0.9rem !important; color: var(--text-muted); margin: 10px 0 0 0 !important; text-align: center; }
+
+        .shots-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .shots-2 .browser { margin-top: 30px; }
+        .shots-2 > div, .with-phone > div { min-width: 0; }
+        .browser .bar span { min-width: 0; }
+
+        .with-phone { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center; }
+        .phone {
+            border: 8px solid #2a2a34;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .phone img { display: block; width: 100%; height: auto; }
+
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+        .swatches { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .swatch { display: flex; align-items: center; gap: 10px; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 14px; font-size: 0.9rem; color: var(--text-main); }
+        .swatch b { width: 26px; height: 26px; border-radius: 6px; display: block; border: 1px solid rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .shots-2 { grid-template-columns: 1fr; gap: 0; }
+            .with-phone { grid-template-columns: 1fr; gap: 25px; }
+            .with-phone .phone { max-width: 240px; margin: 0 auto; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html#cat-programacion" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <header class="project-header">
+            <div class="project-kicker">Programación &amp; Interactivos · UX/UI</div>
+            <h1 class="project-title">Martina Caldas: Portafolio de Diseño de Modas</h1>
+            <div class="project-meta">
+                <div class="meta-item"><strong>Cliente</strong>Martina Caldas, diseñadora de modas</div>
+                <div class="meta-item"><strong>Rol</strong>Curaduría, dirección de arte, UX/UI y desarrollo</div>
+                <div class="meta-item"><strong>Entregable</strong>Sitio web publicado</div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app</span></div>
+                    <img src="img/martina_hero.jpg" alt="Portada del sitio de Martina Caldas con su nombre en tipografía serif sobre un fondo rosado suave" loading="lazy">
+                </div>
+            </div>
+            <div class="btn-row">
+                <a href="https://stellular-chebakia-2bbb18.netlify.app/" target="_blank" rel="noopener" class="btn-outline">Ver Sitio en Vivo</a>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <h2>1. El Reto</h2>
+            <p>Martina es diseñadora de modas especializada en estampación digital, diseño infantil y producción de moda. Tenía muchos proyectos, pero no un lugar donde mostrarlos de forma profesional. El reto era construir un portafolio que <strong>se sienta como una revista de moda</strong>: elegante, simple y con todo el protagonismo puesto en sus colecciones.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>2. Curaduría: Elegir qué Mostrar</h2>
+            <p>Un buen portafolio no muestra todo, sino lo mejor. Revisamos juntos su trabajo y <strong>seleccionamos cinco proyectos</strong> que cubren la variedad de lo que sabe hacer, desde una colección técnica de ski hasta styling para la Met Gala:</p>
+            <div class="tech-grid">
+                <div class="tech-item"><strong>Wild Chrome</strong><span>Colección de ski inspirada en el retro futurismo del Space Age y la fauna exótica.</span></div>
+                <div class="tech-item"><strong>Ornamental Birds</strong><span>Estampados que reinterpretan aves endémicas a través del color, los patrones y las texturas.</span></div>
+                <div class="tech-item"><strong>Sanrio by Martina</strong><span>Línea infantil funcional y segura, con una estética lúdica.</span></div>
+                <div class="tech-item"><strong>First Monday in May</strong><span>Proyecto de Fashion Styling y Producción enfocado en la Met Gala.</span></div>
+                <div class="tech-item"><strong>What Only The Girls Know</strong><span>Colección sobre la feminidad contemporánea, la intimidad compartida y el estilo personal.</span></div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>3. Dirección de Arte: Las Portadas</h2>
+            <p>Cada colección necesitaba una imagen que la resumiera de un vistazo. Creé las <strong>artes de portada</strong> como collages editoriales: figurines, texturas, referencias y elementos gráficos que cuentan el concepto de cada colección antes de leer una sola palabra.</p>
+            <div class="shots-2">
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app</span></div>
+                    <img src="img/martina_grid.jpg" alt="Portadas de Wild Chrome, Ornamental Birds y Sanrio by Martina" loading="lazy">
+                </div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app</span></div>
+                    <img src="img/martina_grid2.jpg" alt="Portadas de First Monday in May y What Only The Girls Know" loading="lazy">
+                </div>
+            </div>
+            </div>
+            <p class="shot-caption">Las cinco colecciones presentadas como tarjetas con su arte de portada.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>4. Diseño UX/UI</h2>
+            <p>La interfaz se diseñó para desaparecer y dejar hablar a la ropa:</p>
+            <div class="tech-grid">
+                <div class="tech-item"><strong>Estética editorial</strong><span>Una tipografía serif elegante para los títulos, texto sans-serif limpio y un fondo rosado suave que acompaña sin competir con las colecciones.</span></div>
+                <div class="tech-item"><strong>Navegación mínima</strong><span>Solo tres accesos (Sobre mí, Portafolio y Contacto) y un recorrido claro: portada → colección → dossier.</span></div>
+                <div class="tech-item"><strong>Una página por colección</strong><span>Cada proyecto tiene su título, su temporada, una galería y la historia de su proceso creativo.</span></div>
+                <div class="tech-item"><strong>Movimiento sutil</strong><span>Las tarjetas aparecen con animaciones suaves al hacer scroll, sin distraer del contenido.</span></div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app/proyecto-wildchrome</span></div>
+                    <img src="img/martina_wild.jpg" alt="Página de la colección Wild Chrome con su título, temporada y galería" loading="lazy">
+                </div>
+                <p class="shot-caption">Página de colección: título, temporada y descripción.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>5. Galería con Zoom para Ver los Detalles</h2>
+            <p>En moda, el detalle lo es todo: la textura de una tela, una costura, un estampado. Por eso cada colección tiene una <strong>galería en mosaico</strong> y un <strong>visor con zoom</strong>: al hacer clic en una imagen se abre a pantalla completa, se puede navegar entre láminas con flechas y hacer zoom moviendo el mouse para explorar los textiles.</p>
+            <div class="shots-2">
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app/proyecto-wildchrome</span></div>
+                    <img src="img/martina_galeria.jpg" alt="Galería en mosaico con fichas técnicas, materiales y figurines de Wild Chrome" loading="lazy">
+                </div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app/proyecto-wildchrome</span></div>
+                    <img src="img/martina_lightbox.jpg" alt="Visor a pantalla completa con flechas de navegación y zoom" loading="lazy">
+                </div>
+            </div>
+            </div>
+            <p class="shot-caption">Galería en mosaico y visor con navegación y zoom.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>6. El Proceso Creativo y el Dossier</h2>
+            <p>Debajo de la galería, cada colección cuenta su historia: la inspiración, los materiales y las decisiones de diseño. Al final, un botón permite <strong>ver o descargar el dossier completo en PDF</strong>, para quien quiera conocer el proyecto a fondo, como un reclutador o una marca.</p>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>stellular-chebakia-2bbb18.netlify.app/proyecto-wildchrome</span></div>
+                    <img src="img/martina_proceso.jpg" alt="Sección El Proceso Creativo de la colección Wild Chrome" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>7. Resultado</h2>
+            <p>Un portafolio publicado en la web que presenta a Martina como diseñadora profesional: cinco colecciones bien elegidas, portadas con identidad propia y una experiencia pensada para mirar de cerca su trabajo.</p>
+            <a href="https://stellular-chebakia-2bbb18.netlify.app/" target="_blank" rel="noopener" class="btn-outline">Ver Sitio en Vivo</a>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>

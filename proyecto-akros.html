@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akros: Rediseño Web | Sebastián Pérez</title>
+    <meta name="description" content="Rediseño UX/UI y desarrollo frontend del sitio web corporativo de Akros, empresa de tecnología de Ecuador.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07070a;
+            --bg-card: #121218;
+            --text-main: #e2e2e2;
+            --text-muted: #8a8a9e;
+            --accent: #00F0FF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-back:hover { color: var(--accent); }
+
+        /* HEADER DEL PROYECTO */
+        .project-header { margin-bottom: 60px; }
+        .project-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-title { font-size: 4rem; line-height: 1.1; margin: 10px 0 15px 0; }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO */
+        .content-section { margin-bottom: 80px; }
+        .content-section h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .content-section p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px; }
+        .content-section strong { color: var(--text-main); }
+
+        /* IMÁGENES (para cuando agregues capturas del proceso) */
+        .img-container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            margin: 40px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Lista de técnicas */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .tech-item strong { display: block; color: #fff; margin-bottom: 5px; }
+        .tech-item span { color: var(--text-muted); }
+
+        /* VIDEO */
+        .video-wrapper-16-9 {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-top: 40px;
+        }
+        .video-wrapper-16-9 iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--bg-base);
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .steps { counter-reset: step; list-style: none; padding: 0; margin: 30px 0 0 0; }
+        .steps li {
+            position: relative;
+            padding: 0 0 25px 55px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute; left: 0; top: 0;
+            width: 34px; height: 34px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            color: var(--accent);
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .steps li strong { display: block; color: #fff; }
+
+        /* Capturas dentro de un marco de navegador */
+        .browser {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #1a1a22;
+            margin: 30px 0 0 0;
+        }
+        .browser .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #1f1f28; }
+        .browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3a46; display: block; }
+        .browser .bar span { margin-left: 10px; font-size: 0.75rem; color: var(--text-muted); background: #121218; padding: 3px 12px; border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .browser img { display: block; width: 100%; height: auto; }
+        .shot-caption { font-size: 0.9rem !important; color: var(--text-muted); margin: 10px 0 0 0 !important; text-align: center; }
+
+        .shots-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .shots-2 .browser { margin-top: 30px; }
+        .shots-2 > div, .with-phone > div { min-width: 0; }
+        .browser .bar span { min-width: 0; }
+
+        .with-phone { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center; }
+        .phone {
+            border: 8px solid #2a2a34;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .phone img { display: block; width: 100%; height: auto; }
+
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+        .swatches { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .swatch { display: flex; align-items: center; gap: 10px; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 14px; font-size: 0.9rem; color: var(--text-main); }
+        .swatch b { width: 26px; height: 26px; border-radius: 6px; display: block; border: 1px solid rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .shots-2 { grid-template-columns: 1fr; gap: 0; }
+            .with-phone { grid-template-columns: 1fr; gap: 25px; }
+            .with-phone .phone { max-width: 240px; margin: 0 auto; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .project-title { font-size: 2.5rem; }
+            .project-meta { flex-direction: column; gap: 15px; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html#cat-programacion" class="btn-back">← Volver al Portafolio</a>
+        </nav>
+
+        <header class="project-header">
+            <div class="project-kicker">Programación &amp; Interactivos · UX/UI</div>
+            <h1 class="project-title">Akros: Rediseño del Sitio Web Corporativo</h1>
+            <div class="project-meta">
+                <div class="meta-item"><strong>Cliente</strong>Akros, empresa de tecnología (Ecuador)</div>
+                <div class="meta-item"><strong>Rol</strong>UX, arquitectura de información, UI y frontend</div>
+                <div class="meta-item"><strong>Alcance</strong>Inicio, menú, cinco páginas de solución y contacto</div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app</span></div>
+                    <img src="img/akros_hero.jpg" alt="Inicio del nuevo sitio de Akros: mensaje principal, dos botones de acción e ilustración con íconos de servicios" loading="lazy">
+                </div>
+            </div>
+            <div class="btn-row">
+                <a href="https://zingy-cannoli-a05cc5.netlify.app/" target="_blank" rel="noopener" class="btn-outline">Ver Sitio en Vivo</a>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <h2>1. El Reto</h2>
+            <p>Akros es una de las empresas de tecnología más grandes del Ecuador, con más de 35 años de trayectoria y cinco grandes líneas de negocio: infraestructura, servicios gestionados, cómputo, nube y ciberseguridad. Su sitio tenía mucha información, pero era difícil saber por dónde empezar.</p>
+            <p>Decidimos <strong>rediseñar el sitio desde cero, reutilizando la información existente</strong> y respetando su manual de marca, para que un gerente o un responsable de TI entienda en segundos qué hace Akros y llegue rápido a la solución que necesita.</p>
+            <div class="swatches">
+                <span class="swatch"><b style="background:#0c1330"></b>Azul marino de marca #0c1330</span>
+                <span class="swatch">Títulos: Noir Pro</span>
+                <span class="swatch">Texto: Open Sans</span>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>2. Arquitectura de Información</h2>
+            <p>Antes de diseñar, reorganicé el contenido alrededor de las preguntas de un cliente empresarial: <strong>¿qué hacen?, ¿me sirve para mi sector?, ¿puedo confiar en ellos? y ¿cómo los contacto?</strong> El resultado es un inicio que responde cada una en orden, y un menú que agrupa el sitio en Soluciones, Industrias, Nosotros y Blog.</p>
+            <p>Las cinco soluciones se convirtieron en <strong>páginas contenedoras</strong>, cada una con todo su detalle de servicios, beneficios y casos, y un color propio que las identifica en todo el sitio.</p>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app</span></div>
+                    <img src="img/akros_menu.jpg" alt="Menú desplegable de Soluciones con las cinco soluciones, su ícono de color y una descripción corta" loading="lazy">
+                </div>
+                <p class="shot-caption">Menú desplegable: cada solución con su color, ícono y una línea que explica qué incluye.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>3. Un Inicio que Responde Rápido</h2>
+            <p>El inicio funciona como un recorrido: un mensaje claro con dos llamadas a la acción, una franja de <strong>cifras que generan confianza</strong>, los fabricantes con los que trabajan, un <strong>explorador de soluciones con pestañas</strong> y un carrusel por industria.</p>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app</span></div>
+                    <img src="img/akros_cifras.jpg" alt="Franja de cifras: más de 35 años, más de 600 clientes, más de 250 colaboradores y Top 3 del país" loading="lazy">
+                </div>
+            </div>
+            <div class="shots-2">
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app</span></div>
+                    <img src="img/akros_soluciones.jpg" alt="Explorador de soluciones con pestañas: Infraestructura digital con sus servicios y beneficios" loading="lazy">
+                </div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app</span></div>
+                    <img src="img/akros_industrias.jpg" alt="Carrusel de industrias: Banca y finanzas con sus soluciones recomendadas" loading="lazy">
+                </div>
+            </div>
+            </div>
+            <p class="shot-caption">Explorador de las cinco soluciones y carrusel de soluciones por industria.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>4. Páginas de Solución</h2>
+            <p>Cada solución tiene su propia página con migas de pan para ubicarse, un encabezado con su color de marca y su contenido organizado para leerse rápido. En Ciberseguridad, por ejemplo, los servicios se explican con un <strong>modelo de tres etapas (Identificar, Prevenir, Detectar y responder)</strong> y después se detallan en tarjetas que se despliegan.</p>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app/ciberseguridad</span></div>
+                    <img src="img/akros_ciber.jpg" alt="Encabezado de la página de Ciberseguridad con migas de pan, título, botones y un hexágono naranja" loading="lazy">
+                </div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app/ciberseguridad</span></div>
+                    <img src="img/akros_ciber2.jpg" alt="Las tres etapas de la ciberseguridad: Identificar, Prevenir y Detectar y responder" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>5. Contacto y Diseño Responsive</h2>
+            <div class="with-phone">
+                <div>
+                    <p>Todo el sitio lleva a una misma acción: <strong>hablar con un asesor</strong>. El botón está siempre visible en el menú y el sitio termina con un formulario de asesoría, un acceso directo a WhatsApp y los datos de las oficinas de Quito y Guayaquil.</p>
+                    <p>En el celular, el menú se convierte en un botón de hamburguesa, la ilustración pasa arriba del mensaje y las cifras se ordenan en dos columnas, para que la experiencia sea igual de clara en cualquier pantalla.</p>
+                </div>
+                <div class="phone">
+                    <img src="img/akros_movil.jpg" alt="Inicio de Akros en el celular con menú de hamburguesa" loading="lazy">
+                </div>
+            </div>
+            <div>
+                <div class="browser">
+                    <div class="bar"><i></i><i></i><i></i><span>zingy-cannoli-a05cc5.netlify.app</span></div>
+                    <img src="img/akros_contacto.jpg" alt="Sección de contacto con formulario de asesoría, botón de WhatsApp y datos de oficinas" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>6. Resultado</h2>
+            <p>Un sitio corporativo moderno que presenta a Akros como lo que es, un aliado tecnológico integral: más claro de recorrer, coherente con su marca y enfocado en convertir visitas en conversaciones con un asesor. El sitio está pensado para publicarse en WordPress, de modo que el equipo de Akros pueda seguir editando su blog.</p>
+            <a href="https://zingy-cannoli-a05cc5.netlify.app/" target="_blank" rel="noopener" class="btn-outline">Ver Sitio en Vivo</a>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Sebastián Pérez Rueda.
+    </footer>
+</body>
+</html>
