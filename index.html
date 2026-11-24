@@ -429,6 +429,26 @@
         }
 
         /* Portada con imagen (en vez de video) */
+        /* Portada de sitio web dentro de un marco de navegador */
+        .cover-site {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1a1a22;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .cover-site .bar {
+            display: flex; align-items: center; gap: 6px;
+            padding: 10px 14px;
+            background: #1f1f28;
+        }
+        .cover-site .bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3a46; display: block; }
+        .cover-site .bar span {
+            margin-left: 10px; font-size: 0.75rem; color: var(--text-muted);
+            background: #121218; padding: 3px 12px; border-radius: 6px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .cover-site img { display: block; width: 100%; height: auto; }
+
         .cover-figma {
             background: #1e1e1e;
             border-radius: 12px;
@@ -881,6 +901,40 @@
                     </div>
                 </div>
                 -->
+
+                <!-- Proyecto: Akros (UX/UI + Frontend) -->
+                <div class="project-block">
+                    <div class="cover-site">
+                        <div class="bar"><i></i><i></i><i></i><span>akros · Soluciones de TI, nube y ciberseguridad</span></div>
+                        <img src="img/akros_hero.jpg" alt="Página de inicio del rediseño web de Akros" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h4>Akros: Rediseño del Sitio Web Corporativo</h4>
+                        <div class="project-tags">UX/UI // Arquitectura de Información // Frontend // Sitio Corporativo</div>
+                        <p class="project-desc">Rediseño desde cero del sitio de Akros, una empresa de tecnología con más de 35 años en Ecuador. Reorganicé toda la información del sitio anterior alrededor de lo que busca un cliente empresarial: entender rápido qué hace Akros, encontrar la solución para su sector y hablar con un asesor. Incluye menú desplegable, un explorador de cinco soluciones, páginas por solución y diseño responsive.</p>
+                        <div class="project-links">
+                            <a href="proyecto-akros.html" class="btn-outline btn-project">Ver Proceso Completo</a>
+                            <a href="https://zingy-cannoli-a05cc5.netlify.app/" target="_blank" rel="noopener" class="btn-ghost btn-project">Ver Sitio en Vivo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto: Martina Caldas (UX/UI + Frontend) -->
+                <div class="project-block">
+                    <div class="cover-site">
+                        <div class="bar"><i></i><i></i><i></i><span>Martina Caldas · Fashion Portfolio</span></div>
+                        <img src="img/martina_grid.jpg" alt="Colecciones del portafolio de Martina Caldas: Wild Chrome, Ornamental Birds y Sanrio by Martina" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h4>Martina Caldas: Portafolio de Diseño de Modas</h4>
+                        <div class="project-tags">UX/UI // Dirección de Arte // Frontend // Portafolio</div>
+                        <p class="project-desc">Portafolio web para una diseñadora de modas. Seleccioné junto a ella los proyectos que mejor la representan, creé las artes de portada de cada colección y diseñé un sitio editorial y minimalista que deja todo el protagonismo a su trabajo: cada colección tiene su propia página, con galería, zoom para ver los detalles de los textiles y su dossier descargable.</p>
+                        <div class="project-links">
+                            <a href="proyecto-martina.html" class="btn-outline btn-project">Ver Proceso Completo</a>
+                            <a href="https://stellular-chebakia-2bbb18.netlify.app/" target="_blank" rel="noopener" class="btn-ghost btn-project">Ver Sitio en Vivo</a>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Proyecto: Interact 2 Hack (UX/UI) -->
                 <div class="project-block">
